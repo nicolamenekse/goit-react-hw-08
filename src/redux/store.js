@@ -9,13 +9,19 @@ import contactsReducer from './contacts/contactsSlice'
 
 const authPersistConfig = {
     key: "auth",
+    
     storage,
     whitelist: ["token"]
 }
 
+const contactPersistConfig = {
+    key:"contacts",
+    storage,
+    whitelist:["items"]
+}
 const rootReducer = combineReducers({
     auth: persistReducer(authPersistConfig, authReducer),
-    contacts: contactsReducer
+    contacts:persistReducer(contactPersistConfig,contactsReducer)
 })
 
 export const store = configureStore({

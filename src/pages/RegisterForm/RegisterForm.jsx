@@ -11,8 +11,7 @@ export default function RegisterForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const user = { name, email, password };
-    dispatch(register(user));
+    dispatch(register({name,email,password}));
   };
   return (
     <div>
