@@ -6,6 +6,10 @@ import {
   deleteContact,
 } from "../../redux/contacts/contactsOperations";
 import { selectItems } from "../../redux/contacts/contactsSelector";
+import toast from "react-hot-toast";
+import { Field, Formik,Form } from "formik";
+import * as Yup from 'yup'
+
 
 export default function ContactsPage() {
   const dispatch = useDispatch();
@@ -16,22 +20,43 @@ export default function ContactsPage() {
 
   const exitClick = () => {
     dispatch(logout());
+    toast.success("Cıkıs yaptınız", {
+      style: {
+        color: "green",
+        backgroundColor: "gray",
+      },
+    });
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    dispatch(addContact({ name, number }));
-    setName("");
-    setNumber("");
+
+
+  const handleAdd = (e) => {
+    e.preventDefault()
+    dispatch(addContact({name,number}))
+    toast.success(`${name} eklendi`,{
+      style:{
+        color:"green",
+        backgroundColor:"black"
+        
+      }
+    })
   };
+
+
 
   const deleteClick = (id) => {
     dispatch(deleteContact(id));
+    toast.error(`Silindi`, {
+      style: {
+        color: "red",
+        backgroundColor: "black",
+      },
+    });
   };
   return (
     <div>
       <div>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleAdd}>
           <input
             type="text"
             name="name"
@@ -49,20 +74,20 @@ export default function ContactsPage() {
 
           <button type="submit">Kaydet</button>
         </form>
+
       </div>
 
       <div>
         <ul>
-          {
-            items.map((item)=>{
-              return(
-                <li key={item.id}> {item.name} : {item.number} 
-                 <button onClick={()=>deleteClick(item.id)} >Sil</button>
-                </li>
-              )
-            })
-          }
-         
+          {items.map((item) => {
+            return (
+              <li key={item.id}>
+                {" "}
+                {item.name} : {item.number}
+                <button onClick={() => deleteClick(item.id)}>Sil</button>
+              </li>
+            );
+          })}
         </ul>
       </div>
 

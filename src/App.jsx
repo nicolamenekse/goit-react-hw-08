@@ -9,7 +9,7 @@ import RestrictedRoute from "./components/RestrictedRoute/RestrictedRoute";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 import ContactsPage from "./pages/ContactsPage/ContactsPage";
-
+import {Toaster} from 'react-hot-toast'
 export default function App() {
   const dispatch = useDispatch();
   const isRefreshing = useSelector(selectIsRefreshing);
@@ -20,6 +20,7 @@ export default function App() {
 
   return (
     <>
+    <Toaster/>
       {isRefreshing ? (
         <p>Refresh User</p>
       ) : (

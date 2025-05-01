@@ -1,27 +1,46 @@
-import React, { useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { login } from '../../redux/auth/authOperations'
-import { selectToken } from '../../redux/auth/authSelectors'
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { login } from "../../redux/auth/authOperations";
+import { selectIsLoggedIn} from "../../redux/auth/authSelectors";
+import toast from "react-hot-toast";
+import { Link } from "react-router-dom";
+import {Formik,Field,Form,ErrorMessage} from 'formik'
+import * as Yup from "yup"
+import Button from '@mui/material/Button';
+
 
 export default function LoginPage() {
-  const dispatch = useDispatch()
-  const selectLogin = useSelector(selectToken)
+  const dispatch = useDispatch();
+  const isLoggeddIn = useSelector(selectIsLoggedIn)
 
-  const [email,setEmail] = useState("")
-  const [password,setPassword] = useState("")
 
-  const handleSubmit = (e)=>{
-    e.preventDefault()
-    dispatch(login({email,password}))
+  const initialValues = {
+    email:"",
+    password:""
   }
+
+  const validationSchema = Yup.object({
+    email:Yup.string().email("Geçerli bir e-posta giriniz").required("e posta zorunludurrrrrrrrr"),
+    password:Yup.string().min(6,"En az 6 karakterli olmalıdır").required("Sifre szorunludururr")
+    
+  })
+ 
+  const handleSubmit = (values)=>{
+    dispatch(login(values))
+  }
+
   return (
     <>
-    <form onSubmit={handleSubmit}>
-      <input type="email" name='login' value={email} placeholder='mailinizi giriniz' onChange={(e)=>setEmail(e.target.value)}  />
-      <input type="password" name="password" value={password} placeholder='parolayı giriniz' onChange={(e)=>setPassword(e.target.value)} />
-      <button type='submit' >Giriş yap</button>
-    </form>
     
+
+      <Formik  initialValues={initialValues} validationSchema={validationSchema} onSubmit={handleSubmit}>
+        <Form>
+          <Field type="email" id="email" name="email" placeholder="emaili giriniz"  />
+          <Field type="password" id="password" name="password" placeholder="parolayı giriniz" />
+          <Button type="submit" variant="contained">Giriş yap</Button>
+        </Form>
+      </Formik>
+      <Link to="/register" >Henüz kaydınız yoksa Kayıt ol</Link>
     </>
-  )
+  );
 }
