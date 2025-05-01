@@ -23,7 +23,6 @@ export default function RegisterForm() {
           placeholder="name"
           onChange={(e) => setName(e.target.value)}
         />
-
         <input
           type="email"
           value={email}
