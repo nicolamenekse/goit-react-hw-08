@@ -59,12 +59,12 @@ export default function RegisterForm() {
           <button type="submit">Kayıt ol</button>
         </Form>
       </Formik>
-        <div className={css.loginButton}>
-          <Link to="/login">Giriş yap</Link>
-        </div>
-        <div className={css.homePage}>
-          <Link to="/">Ana Sayfa</Link>
-        </div>
+      <div className={css.loginButton}>
+        <Link to="/login">Giriş yap</Link>
+      </div>
+      <div className={css.homePage}>
+        <Link to="/">Ana Sayfa</Link>
+      </div>
     </div>
   );
 }

@@ -9,10 +9,13 @@ import RestrictedRoute from "./components/RestrictedRoute/RestrictedRoute";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 import ContactsPage from "./pages/ContactsPage/ContactsPage";
-import {Toaster} from 'react-hot-toast'
+import { Toaster } from "react-hot-toast";
+import { selectError, selectLoading } from "./redux/contacts/contactsSelector";
 export default function App() {
   const dispatch = useDispatch();
   const isRefreshing = useSelector(selectIsRefreshing);
+  const loading = useSelector(selectLoading);
+const error = useSelector(selectError)
 
   useEffect(() => {
     dispatch(refresh());
@@ -20,7 +23,9 @@ export default function App() {
 
   return (
     <>
-    <Toaster/>
+    {loading && <p>Yükleniyor...</p> }
+    {error && <p>Error {error}</p> }
+      <Toaster />
       {isRefreshing ? (
         <p>Refresh User</p>
       ) : (
@@ -43,9 +48,7 @@ export default function App() {
           />
           <Route
             path="/contacts"
-            element={
-              <PrivateRoute redirectTo="/" element={<ContactsPage />} />
-            }
+            element={<PrivateRoute redirectTo="/" element={<ContactsPage />} />}
           />
           <Route path="*" element={<HomePage />} />
         </Routes>
