@@ -22,9 +22,10 @@ export const authSlice = createSlice({
                     state.token = action.payload.token,
                     state.loading = false,
                     state.error = null,
-                    state.isLoggedIn = true,
-                    console.log("Kayıt basarılır bremın")
+                    state.isLoggedIn = true
+                    // console.log("Kayıt basarılır")
             })
+
             .addCase(register.rejected, (state, action) => {
                 state.loading = false,
                     state.error = action.payload
@@ -44,7 +45,7 @@ export const authSlice = createSlice({
             .addCase(login.rejected, (state, action) => {
                 state.loading = false,
                     state.error = action.payload
-                    console.log(state.error,"hata tam burada")
+                    // console.log(state.error,"hata tam burada")
             })
 
 

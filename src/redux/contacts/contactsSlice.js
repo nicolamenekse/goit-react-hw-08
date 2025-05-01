@@ -29,8 +29,8 @@ export const contactsSlice = createSlice({
           state.error = null;
         })
         .addCase(addContact.fulfilled, (state, action) => {
-            console.log("state.items",state.items)
-            console.log("itemsin tipi ", typeof state.items)
+            // console.log("state.items",state.items)
+            // console.log("itemsin tipi ", typeof state.items)
             state.loading = false;
           state.error = null;
           state.items = [...state.items, action.payload]

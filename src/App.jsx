@@ -11,6 +11,7 @@ import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 import ContactsPage from "./pages/ContactsPage/ContactsPage";
 import { Toaster } from "react-hot-toast";
 import { selectError, selectLoading } from "./redux/contacts/contactsSelector";
+
 export default function App() {
   const dispatch = useDispatch();
   const isRefreshing = useSelector(selectIsRefreshing);
@@ -23,8 +24,8 @@ const error = useSelector(selectError)
 
   return (
     <>
-    {loading && <p>Yükleniyor...</p> }
-    {error && <p>Error {error}</p> }
+    { loading && <p>Yükleniyor ...</p> }
+    { error && <p>Hata var {error} </p> }
       <Toaster />
       {isRefreshing ? (
         <p>Refresh User</p>

@@ -12,22 +12,22 @@ const clearAuthHeader = () => {
 }
 
 export const register = createAsyncThunk("auth/signup", async (userData, thunkAPI) => {
-    console.log("gönderilenveri ",JSON.stringify(userData))
+    // console.log("gönderilenveri ",JSON.stringify(userData))
     try {
         const response = await axios.post("/users/signup", userData)
         if (response.data.token) {
 
             setAuthHeader(response.data.token)
-            console.log(response.data.token)
+            // console.log(response.data.token)
             
         } else {
-            console.log("token yok")
+            // console.log("token yok")
             return thunkAPI.rejectWithValue("token bulunamadı abe")
         }
 
         return response.data
     } catch (err) {
-        console.log("abe hata tam olarak burada", err)
+        // console.log("abe hata tam olarak burada", err)
         return thunkAPI.rejectWithValue(err.message)
     }
 })
@@ -39,7 +39,7 @@ export const login = createAsyncThunk("auth/login", async (userData, thunkAPI) =
 
         return response.data
     } catch (err) {
-        console.log("abe hata tam olarak burada222", err)
+        // console.log("abe hata tam olarak burada222", err)
         return thunkAPI.rejectWithValue(err.message)
     }
 })
