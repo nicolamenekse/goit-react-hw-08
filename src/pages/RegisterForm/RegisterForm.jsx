@@ -5,6 +5,7 @@ import toast from "react-hot-toast";
 import { Link } from "react-router-dom";
 import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
+import css from "./RegisterForm.module.css";
 
 export default function RegisterForm() {
   const dispatch = useDispatch();
@@ -24,50 +25,19 @@ export default function RegisterForm() {
 
   const registerSubmit = (values) => {
     dispatch(register(values));
+    toast.success("Kayıt Başarılı!");
   };
 
-  // const [name, setName] = useState("");
-  // const [email, setEmail] = useState("");
-  // const [password, setPassword] = useState("");
-
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   dispatch(register({name,email,password}));
-  //   toast.success("Kaydınız tamamlandı.")
-  // };
-
   return (
-    <div>
-      <h1>Register Form</h1>
-      {/* <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          value={name}
-          placeholder="name"
-          onChange={(e) => setName(e.target.value)}
-        />
-        <input
-          type="email"
-          value={email}
-          placeholder="email"
-          onChange={(e) => setEmail(e.target.value)}
-        />
-
-        <input
-          type="password"
-          value={password}
-          placeholder="parola"
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <button type="submit">Kayıt ol </button>
-      </form> */}
-
+    <div className={css.containerRegister}>
       <Formik
         initialValues={initialValues}
         validationSchema={validationSchema}
         onSubmit={registerSubmit}
+        className={css.formik}
       >
         <Form>
+          <h3 className={css.title}>Kayıt ol</h3>
           <Field
             type="text"
             id="name"
@@ -86,10 +56,15 @@ export default function RegisterForm() {
             name="password"
             placeholder="parolayı giriniz"
           />
-          <button type="submit" >Kayıt ol</button>
+          <button type="submit">Kayıt ol</button>
         </Form>
       </Formik>
-      <Link to="/login">Giriş yap</Link>
+        <div className={css.loginButton}>
+          <Link to="/login">Giriş yap</Link>
+        </div>
+        <div className={css.homePage}>
+          <Link to="/">Ana Sayfa</Link>
+        </div>
     </div>
   );
 }

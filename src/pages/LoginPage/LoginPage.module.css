@@ -1,0 +1,82 @@
+.form{
+    display: flex;
+	align-items: center;
+	justify-content: center;
+	min-height: 100vh;
+    gap: 20px;
+}
+
+.form input{
+    border: none;
+	border-bottom: 2px solid #D1D1D4;
+	background: none;
+	padding: 10px;
+	padding-left: 24px;
+	font-weight: 700;
+	width: 75%;
+	transition: .2s;
+}
+
+.form input:active,
+.form input:focus,
+.form input:hover{
+    outline: none;
+	border-bottom-color: #6A679E;
+}
+
+.form button{
+    background: #fff;
+	font-size: 14px;
+	padding: 16px 20px;
+	border-radius: 26px;
+	border: 1px solid #D4D3E8;
+	font-weight: 700;
+	display: flex;
+	align-items: center;
+	width: 100%;
+	color: #4C489D;
+	box-shadow: 0px 2px 2px #5C5696;
+	cursor: pointer;
+	transition: .2s;
+}
+
+.form button:active,
+.form button:hover,
+.form button:focus{
+    border-color: #6A679E;
+	outline: none;
+	background-color: green;
+	color: black;
+	font-weight: bold;
+}
+
+.buttons{
+	display: flex;
+	gap: 20px;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	transition: 0.5s ease-in;
+}
+.buttons a{
+	background: #fff;
+	font-size: 14px;
+	padding: 5px;
+	border-radius: 26px;
+	display: flex;
+	font-weight: bold;
+	align-items: center;
+	transition: 0.5s ease-in;
+}
+
+.register:hover{
+	color: black;
+	background-color: red;
+	font-weight: bold;
+}
+
+.homePage:hover{
+	color: black;
+	background-color: yellow;
+	font-weight: bold;
+}

@@ -1,14 +1,19 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import css from "./HomePage.module.css";
 
 export default function HomePage() {
   return (
-    <div>
-      <h1>Hosgeldin , burası homepagen</h1>
+    <div className={css.containerHome}>
+      <h1>PhoneBook'a Hoş Geldiniz!</h1>
       <p>
-        <Link to="/login">Giriş Yap</Link>
-        yadaaaaa
-        <Link to="/register">Kayıt Ol</Link>
+        <Link className={css.register} to="/register">
+          Kayıt Ol
+        </Link>
+        veya
+        <Link className={css.login} to="/login">
+          Giriş Yap
+        </Link>
       </p>
     </div>
   );

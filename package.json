@@ -25,6 +25,7 @@
     "react-router-dom": "^7.5.3",
     "redux": "^5.0.1",
     "redux-persist": "^6.0.0",
+    "useref": "^1.4.4",
     "yup": "^1.6.1"
   },
   "devDependencies": {

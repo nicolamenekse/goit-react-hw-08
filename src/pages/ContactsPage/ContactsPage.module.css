@@ -1,0 +1,88 @@
+.contactForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 100px;
+  margin-top: 50px;
+}
+
+.contactForm form {
+  display: flex;
+  gap: 20px;
+}
+
+.contactForm input {
+  outline: none;
+  color: white;
+  font-weight: bold;
+}
+
+.contactForm button{
+    outline: none;
+    color: purple;
+}
+
+.contactList{
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+}
+.contactList ul{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+
+.contactList li{
+    border: 2px solid purple;
+    border-radius: 10px;
+    padding: 10px;
+    display: flex;
+    gap: 50px;
+    align-items: center;
+    text-align: center;
+    justify-content: space-evenly;
+    border-bottom: 1px solid purple;
+}
+.contactList label{
+    color:purple;
+    font-weight: bold;
+    
+}
+.contactList p{
+    color: white;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+.contactList img{
+    display: block;
+    inline-size: 100%;
+    block-size: 100%;
+    object-fit: cover;
+    clip-path: circle(42%);
+    width: 70px;
+}
+
+.figCaption{
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    font-weight: 500;
+}
+
+.exitButton{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+.exitButton button{
+    outline: none;
+    color: red;
+    font-weight: bold;
+    outline: none;
+}
